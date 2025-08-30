@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronómetro Cyberpunk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="credits-header">
+        <p>Hecho por Carlos Dev.</p>
+        <p>Poniendo en práctica conocimientos de <strong>CSS, HTML y JavaScript</strong>.</p>
+    </header>
+
+    <main class="container">
+        <div id="timer-display">00:00</div>
+        <div class="controls">
+            <button id="startBtn">Iniciar</button>
+            <button id="resetBtn">Reiniciar</button>
+            <button id="historyBtn" class="history-toggle-btn">Historial</button>
+            <button id="playAllAudiosBtn" class="audio-btn">Escuchar audios</button>
+        </div>
+        <div id="history-panel" class="history-hidden">
+            </div>
+    </main>
+
+    <footer class="credits-footer">
+        <p>Agradecimientos al libro <strong>JavaScript Elocuente</strong> por la inspiración.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

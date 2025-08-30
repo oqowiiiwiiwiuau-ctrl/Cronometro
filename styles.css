@@ -1,0 +1,236 @@
+/* Variables para una gestión de colores sencilla */
+:root {
+    --bg-color: #333644;
+    --primary-color: #66fcf1; /* Cían futurista */
+    --secondary-color: #c5a3ff; /* Púrpura */
+    --accent-color: #45a29e;
+    --text-color: #fcfcfc;
+}
+
+/* Estilos generales y fuentes */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    /* Usamos una fuente futurista de Google Fonts para un mejor impacto */
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Encabezado y pie de página de créditos */
+.credits-header, .credits-footer {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--accent-color);
+    position: relative;
+    z-index: 1;
+}
+
+/* Contenedor principal */
+.container {
+    background-color: rgba(22, 22, 29, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--accent-color);
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(102, 252, 241, 0.3), 0 0 80px rgba(197, 163, 255, 0.3);
+    padding: 50px;
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px 0;
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Efecto de glitch sutil */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: inset 0 0 10px rgba(102, 252, 241, 0.3);
+    pointer-events: none;
+    animation: glitchEffect 10s infinite alternate;
+}
+
+/* Estilo del temporizador */
+#timer-display {
+    font-size: clamp(3em, 10vw, 8em); /* Tamaño adaptable */
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    text-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+/* Controles del cronómetro (botones) */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
+}
+
+button {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--bg-color);
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(102, 252, 241, 0.4);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px var(--primary-color), 0 0 50px var(--secondary-color);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Botón de historial */
+.history-toggle-btn {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--primary-color);
+    box-shadow: none;
+    padding: 15px;
+}
+
+.history-toggle-btn:hover {
+    background: rgba(102, 252, 241, 0.1);
+    transform: none;
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+/* Estilos para el nuevo botón de reinicio */
+#resetBtn {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: none;
+    padding: 15px 30px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#resetBtn:hover {
+    background: rgba(69, 162, 158, 0.2);
+    transform: none;
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+/* Estilos para el nuevo botón de reproducción de audio */
+.audio-btn {
+    background: transparent;
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    box-shadow: none;
+    padding: 15px;
+}
+
+.audio-btn:hover {
+    background: rgba(197, 163, 255, 0.1);
+    transform: none;
+    box-shadow: 0 0 10px var(--secondary-color);
+}
+
+/* Panel de historial */
+#history-panel {
+    margin-top: 30px;
+    padding: 20px;
+    border-top: 1px solid var(--accent-color);
+    text-align: left;
+    max-height: 200px;
+    overflow-y: auto;
+    transition: all 0.5s ease;
+    opacity: 1;
+    visibility: visible;
+}
+
+#history-panel.history-hidden {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    padding: 0;
+    margin-top: 0;
+}
+
+/* Estilos para los elementos del historial */
+#history-panel p {
+    margin: 5px 0;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px rgba(102, 252, 241, 0.5);
+    border-bottom: 1px dashed var(--accent-color);
+    padding-bottom: 5px;
+}
+
+/* Diseño responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 30px;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+        font-size: 1em;
+        padding: 12px;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glitchEffect {
+    0%, 100% { clip-path: inset(0 0 0 0); }
+    10% { clip-path: inset(10% 0 85% 0); }
+    20% { clip-path: inset(60% 0 15% 0); }
+    30% { clip-path: inset(15% 0 75% 0); }
+    40% { clip-path: inset(55% 0 25% 0); }
+    50% { clip-path: inset(30% 0 50% 0); }
+    60% { clip-path: inset(70% 0 5% 0); }
+    70% { clip-path: inset(5% 0 80% 0); }
+    80% { clip-path: inset(45% 0 35% 0); }
+    90% { clip-path: inset(25% 0 65% 0); }
+}
